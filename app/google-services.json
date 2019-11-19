@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "609721182362",
+    "firebase_url": "https://mobapde-androidchallenge2.firebaseio.com",
+    "project_id": "mobapde-androidchallenge2",
+    "storage_bucket": "mobapde-androidchallenge2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609721182362:android:e51dbac60f1b4244825723",
+        "android_client_info": {
+          "package_name": "com.example.androidchallenge2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609721182362-h52787t7d6975kk67kg0i6bib12bt18t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.androidchallenge2",
+            "certificate_hash": "b59296be6fa72b999788f1255642bbffda1db04b"
+          }
+        },
+        {
+          "client_id": "609721182362-abku037ug2g1glcr1i4ci7m527l5e9us.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD9ZGTTQgKRtmmU-Qc1yar_Z9cyJjnFDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609721182362-abku037ug2g1glcr1i4ci7m527l5e9us.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
