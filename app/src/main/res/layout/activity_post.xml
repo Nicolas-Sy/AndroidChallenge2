@@ -18,7 +18,7 @@
         android:layout_marginLeft="45dp"
         android:layout_marginTop="603dp"
         android:onClick="Back"
-        android:text="Add Post"
+        android:text="Back"
         tools:layout_editor_absoluteX="57dp"
         tools:layout_editor_absoluteY="680dp" />
 
