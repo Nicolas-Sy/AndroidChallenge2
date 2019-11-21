@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     Post post = postSnapshot.getValue(Post.class);
                     //adding artist to the list
                     posts.add(post);
+
                 }
 
                 PostList postAdapter = new PostList(MainActivity.this,posts);
