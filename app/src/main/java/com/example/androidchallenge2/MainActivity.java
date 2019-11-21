@@ -94,4 +94,16 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 2);
     }
 
+    public void sortByDate(View v){
+
+        //read everything from the db
+        //sort based on time stamp
+    }
+
+    public void sortByCategory(View v){
+        //read everything from the db
+        //display a list of all categories which user can click
+        //match string to all entries in the db
+        //sort based on time stamp
+    }
 }
