@@ -5,6 +5,44 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textViewSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sort:"
+        android:textSize="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"
+        />
+
+    <Button
+        android:id="@+id/buttonSortDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
+        android:onClick="sortByDate"
+        android:text="By Date" />
+
+    <Button
+        android:id="@+id/buttonSortCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="100dp"
+        android:onClick="sortByCategory"
+        android:text="By Category" />
+
+
     <Button
         android:id="@+id/createPost"
         android:layout_width="wrap_content"
