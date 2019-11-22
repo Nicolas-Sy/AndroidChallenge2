@@ -1,5 +1,7 @@
 package com.example.androidchallenge2;
 
+import java.util.Date;
+
 public class Post {
     private String content;
     private String category;
@@ -10,11 +12,11 @@ public class Post {
     public Post(){
 
     }
-    public Post(String id, String title, String content){
+    public Post(String id, String title, String category, String date, String content){
         this.id = id;
         this.title = title;
-        //this.category = category;
-        //this.date = date;
+        this.category = category;
+        this.date = date;
         this.content = content;
     }
 

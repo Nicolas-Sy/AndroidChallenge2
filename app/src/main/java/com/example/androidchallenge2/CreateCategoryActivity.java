@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateCategoryActivity extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class CreateCategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_category);
-
+        databaseCategories = FirebaseDatabase.getInstance().getReference("category");
         textViewCategoryName = (TextView) findViewById(R.id.textViewCategoryName);
         editTextCategory = (EditText) findViewById(R.id.editTextCategory);
         buttonAdd = (Button) findViewById(R.id.buttonAdd);
