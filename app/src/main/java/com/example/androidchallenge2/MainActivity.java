@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     List<CheckBox> categoryCheckBox = new ArrayList<CheckBox>();
 
     List<Post> posts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,15 +102,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sortByDate(View v){
-
-        //read everything from the db
-        //sort based on time stamp
+            //read everything from the db
+            //sort based on time stamp
     }
 
     public void sortByCategory(View v){
-        //read everything from the db
-        //display a list of all categories which user can click
-        //match string to all entries in the db
-        //sort based on time stamp
+        Intent intent = new Intent(this, ChooseCategoryActivity.class);
+        startActivity(intent);
+
     }
 }
