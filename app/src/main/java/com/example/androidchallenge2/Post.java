@@ -14,7 +14,7 @@ public class Post {
         this.id = id;
         this.title = title;
         //this.category = category;
-        //this.date = date;
+        this.date = date;
         this.content = content;
     }
 
