@@ -95,9 +95,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sortByDate(View v){
-
-        //read everything from the db
-        //sort based on time stamp
+            //read everything from the db
+            //sort based on time stamp
     }
 
     public void sortByCategory(View v){
