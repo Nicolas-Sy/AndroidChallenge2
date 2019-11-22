@@ -32,7 +32,7 @@ public class PostList extends ArrayAdapter<Post> {
         Post post = posts.get(position);
         textViewName.setText(post.getTitle());
         textViewCategory.setText(post.getCategory());
-        textViewDate.setText(post.getDate());
+        textViewDate.setText(post.getDate().toString());
 
         return listViewItem;
     }

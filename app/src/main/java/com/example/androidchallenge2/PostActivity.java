@@ -14,11 +14,13 @@ public class PostActivity extends AppCompatActivity {
 
     public static final String POST_TITLE = "POST_TITLE";
     public static final String POST_ID= "POST_ID";
+    public static final String POST_CATEGORY = "POST_CATEGORY";
     public static final String POST_CONTENT = "POST_CONTENT";
+    public static final String POST_TIME = "POST_TIME";
 
-    TextView postContent, postTitle;
+    TextView postContent, postTitle, postCategory, postTime;
     DatabaseReference databasePosts;
-    String title,content;
+    String title,content,category, time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +30,21 @@ public class PostActivity extends AppCompatActivity {
         Intent intent = getIntent();
         title = intent.getStringExtra(POST_TITLE);
         content = intent.getStringExtra(POST_CONTENT);
+        category = intent.getStringExtra(POST_CATEGORY);
+        time = intent.getStringExtra(POST_TIME);
+
 
         databasePosts = FirebaseDatabase.getInstance().getReference("posts").child(intent.getStringExtra(MainActivity.POST_ID));
         postContent = findViewById(R.id.postContent);
         postTitle = findViewById(R.id.postTitle);
+        postCategory = findViewById(R.id.postCategory);
+        postTime = findViewById(R.id.TimeStamp);
 
         postTitle.setText(title);
         postContent.setText(content);
+        postCategory.setText(category);
+        postTime.setText(time);
+
     }
 
     public void Back(View v){

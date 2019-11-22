@@ -82,7 +82,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
-                android:text="Personal" />
+                android:text="Personal"
+                android:onClick="onCheckboxClicked"/>
 
             <CheckBox
                 android:id="@+id/profCategory"
@@ -91,7 +92,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
-                android:text="Professional" />
+                android:text="Professional"
+                android:onClick="onCheckboxClicked"/>
 
             <CheckBox
                 android:id="@+id/importantCategory"
@@ -100,7 +102,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
-                android:text="Important" />
+                android:text="Important"
+                android:onClick="onCheckboxClicked"/>
 
         </LinearLayout>
     </ScrollView>

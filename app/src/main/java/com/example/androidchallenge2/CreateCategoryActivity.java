@@ -26,7 +26,7 @@ public class CreateCategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_category);
-
+        databaseCategories = FirebaseDatabase.getInstance().getReference("category");
         textViewCategoryName = (TextView) findViewById(R.id.textViewCategoryName);
         editTextCategory = (EditText) findViewById(R.id.editTextCategory);
         buttonAdd = (Button) findViewById(R.id.buttonAdd);

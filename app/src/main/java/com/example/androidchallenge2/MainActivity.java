@@ -17,13 +17,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String POST_TITLE = "POST_TITLE";
     public static final String POST_ID= "POST_ID";
+    public static final String POST_CATEGORY = "POST_CATEGORY";
     public static final String POST_CONTENT = "POST_CONTENT";
+    public static final String POST_TIME = "POST_TIME";
 
     Button createCategory, createPost;
     ListView listViewPosts;
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(POST_ID,post.getId());
                 intent.putExtra(POST_TITLE, post.getTitle());
                 intent.putExtra(POST_CONTENT,post.getContent());
+                intent.putExtra(POST_CATEGORY,post.getCategory());
+                intent.putExtra(POST_TIME, post.getDate());
                 startActivity(intent);
             }
         });
@@ -67,9 +72,9 @@ public class MainActivity extends AppCompatActivity {
                 posts.clear();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting artist
+                    //getting post
                     Post post = postSnapshot.getValue(Post.class);
-                    //adding artist to the list
+                    //adding post to the list
                     posts.add(post);
 
                 }
