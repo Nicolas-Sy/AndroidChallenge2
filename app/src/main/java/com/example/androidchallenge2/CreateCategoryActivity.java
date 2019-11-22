@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,12 +15,15 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreateCategoryActivity extends AppCompatActivity {
 
     TextView textViewCategoryName;
     EditText editTextCategory;
     Button buttonAdd, buttonBack;
-
+    List<CheckBox> categoryCheckBox = new ArrayList<CheckBox>();
     DatabaseReference databaseCategories;
 
     @Override
@@ -40,6 +44,8 @@ public class CreateCategoryActivity extends AppCompatActivity {
                 addCategory();
             }
         });
+
+
 
     }
 

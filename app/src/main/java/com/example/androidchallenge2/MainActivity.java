@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Button createCategory, createPost;
     ListView listViewPosts;
     DatabaseReference databasePosts;
+    List<CheckBox> categoryCheckBox = new ArrayList<CheckBox>();
 
     List<Post> posts;
     @Override
@@ -69,15 +71,14 @@ public class MainActivity extends AppCompatActivity {
         databasePosts.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                posts.clear();
+                    posts.clear();
 
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting post
-                    Post post = postSnapshot.getValue(Post.class);
-                    //adding post to the list
-                    posts.add(post);
-
-                }
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        //getting post
+                        Post post = postSnapshot.getValue(Post.class);
+                        //adding post to the list
+                        posts.add(post);
+                    }
 
                 PostList postAdapter = new PostList(MainActivity.this,posts);
                 listViewPosts.setAdapter(postAdapter);
