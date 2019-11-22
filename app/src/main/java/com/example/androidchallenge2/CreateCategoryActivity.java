@@ -2,6 +2,7 @@ package com.example.androidchallenge2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -30,6 +31,8 @@ public class CreateCategoryActivity extends AppCompatActivity {
         editTextCategory = (EditText) findViewById(R.id.editTextCategory);
         buttonAdd = (Button) findViewById(R.id.buttonAdd);
         buttonBack = (Button) findViewById(R.id.buttonBack);
+
+        databaseCategories = FirebaseDatabase.getInstance().getReference("category");
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,5 +64,10 @@ public class CreateCategoryActivity extends AppCompatActivity {
         else{
             Toast.makeText(this, "Please enter a category", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void goBack(View v){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
