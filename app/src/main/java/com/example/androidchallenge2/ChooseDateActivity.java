@@ -3,6 +3,7 @@ package com.example.androidchallenge2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -24,7 +25,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-/**INCOMPLETE
+
 public class ChooseDateActivity extends AppCompatActivity {
 
     EditText dateText;
@@ -32,7 +33,7 @@ public class ChooseDateActivity extends AppCompatActivity {
     DatabaseReference databasePosts;
     Date parsedDate;
     List<Post> posts;
-    final DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    final Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,15 +48,7 @@ public class ChooseDateActivity extends AppCompatActivity {
     }
 
     public void sortByTimeStamp(View v){
-
-        try {
-            String dateToParse = dateText.getText().toString();
-            System.out.println(dateToParse);
-            parsedDate = formatter.parse(dateToParse);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        final String input_date = dateText.getText().toString();
         databasePosts.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -65,11 +58,8 @@ public class ChooseDateActivity extends AppCompatActivity {
                     //getting post
                     Post post = postSnapshot.getValue(Post.class);
                     //adding post to the list
-                    System.out.println(parsedDate);
-                    System.out.println(post.getDate());
 
-
-                    if(parsedDate.equals(post.getDate()))
+                    if(formatter.format(post.getDate()).contains(input_date))
                         posts.add(post);
                 }
 
@@ -94,5 +84,11 @@ public class ChooseDateActivity extends AppCompatActivity {
         }
 
     }
+
+    public void Back(View v){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
-*/

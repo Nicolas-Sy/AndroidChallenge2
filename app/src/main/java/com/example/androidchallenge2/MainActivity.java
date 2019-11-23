@@ -107,9 +107,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sortByTimeStamp(View v){
-        Collections.sort(posts, new MainActivity.TimeStampComparator());
-        PostList postAdapter = new PostList(MainActivity.this,posts);
-        listViewPosts.setAdapter(postAdapter);
+        Intent intent = new Intent(this, ChooseDateActivity.class);
+        startActivity(intent);
 
     }
     public class TimeStampComparator implements Comparator<Post> {
