@@ -1,5 +1,7 @@
 package com.example.androidchallenge2;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Post {
@@ -7,12 +9,12 @@ public class Post {
     private String category;
     private String title;
     private String id;
-    private String date;
-
+    private Date date;
+    final DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public Post(){
 
     }
-    public Post(String id, String title, String category, String date, String content){
+    public Post(String id, String title, String category, Date date, String content){
         this.id = id;
         this.title = title;
         this.category = category;
@@ -32,7 +34,7 @@ public class Post {
         return title;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 

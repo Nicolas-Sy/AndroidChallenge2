@@ -7,16 +7,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class PostList extends ArrayAdapter<Post> {
     private Activity context;
     List<Post> posts;
-
+    final Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public PostList(Activity context, List<Post> posts) {
         super(context, R.layout.layout_post_list, posts);
         this.context = context;
         this.posts= posts;
+
+
     }
 
 
@@ -30,9 +34,10 @@ public class PostList extends ArrayAdapter<Post> {
         TextView textViewDate = (TextView) listViewItem.findViewById(R.id.textViewDate);
 
         Post post = posts.get(position);
+
         textViewName.setText(post.getTitle());
         textViewCategory.setText(post.getCategory());
-        textViewDate.setText(post.getDate().toString());
+        textViewDate.setText(formatter.format(post.getDate()));
 
         return listViewItem;
     }

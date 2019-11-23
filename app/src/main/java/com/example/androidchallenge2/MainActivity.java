@@ -17,7 +17,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String POST_CONTENT = "POST_CONTENT";
     public static final String POST_TIME = "POST_TIME";
 
-    Button createCategory, createPost;
+    Button createCategory, createPost,buttonSortDate;
     ListView listViewPosts;
     DatabaseReference databasePosts;
     List<CheckBox> categoryCheckBox = new ArrayList<CheckBox>();
@@ -41,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-
         databasePosts = FirebaseDatabase.getInstance().getReference("posts");
         createCategory = findViewById(R.id.createCategory);
         createPost = findViewById(R.id.createPost);
+        buttonSortDate = findViewById(R.id.buttonSortDate);
         listViewPosts = findViewById(R.id.listViewPosts);
+        final Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         posts = new ArrayList<>();
 
@@ -54,13 +58,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 Post post = posts.get(i);
+                String timestamp_string = formatter.format(post.getDate());
 
                 Intent intent = new Intent(getApplicationContext(), PostActivity.class);
                 intent.putExtra(POST_ID,post.getId());
                 intent.putExtra(POST_TITLE, post.getTitle());
                 intent.putExtra(POST_CONTENT,post.getContent());
                 intent.putExtra(POST_CATEGORY,post.getCategory());
-                intent.putExtra(POST_TIME, post.getDate());
+                intent.putExtra(POST_TIME, timestamp_string);
                 startActivity(intent);
             }
         });
@@ -101,11 +106,19 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 2);
     }
 
-    public void sortByDate(View v){
-            //read everything from the db
-            //sort based on time stamp
-    }
+    public void sortByTimeStamp(View v){
+        Collections.sort(posts, new MainActivity.TimeStampComparator());
+        PostList postAdapter = new PostList(MainActivity.this,posts);
+        listViewPosts.setAdapter(postAdapter);
 
+    }
+    public class TimeStampComparator implements Comparator<Post> {
+        @Override
+        public int compare(Post earlypost, Post latepost) {
+            return latepost.getDate().compareTo(earlypost.getDate());
+        }
+
+    }
     public void sortByCategory(View v){
         Intent intent = new Intent(this, ChooseCategoryActivity.class);
         startActivity(intent);

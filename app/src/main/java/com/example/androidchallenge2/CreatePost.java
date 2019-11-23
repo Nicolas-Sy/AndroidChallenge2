@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,16 +32,15 @@ public class CreatePost extends AppCompatActivity {
     public static final String POST_CATEGORY = "POST_CATEGORY";
     public static final String POST_CONTENT = "POST_CONTENT";
 
-    String categoriesString = "";
+    String categoriesString = "", category_mem = "";
     EditText createTitle, createContent;
     List<Post> posts;
-    CheckBox personalCategory, profCategory, importantCategory;
     List<CheckBox> categoryCheckBox = new ArrayList<>();
     DatabaseReference databasePosts, databaseCategories;
     Date currentTime = Calendar.getInstance().getTime();
     ArrayList<Category> categories = new ArrayList<>();
     LinearLayout checkBoxContainer;
-
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +51,9 @@ public class CreatePost extends AppCompatActivity {
         databaseCategories = FirebaseDatabase.getInstance().getReference("category");
         createTitle = findViewById(R.id.createTitle);
         createContent = findViewById(R.id.createContent);
-        personalCategory = findViewById(R.id.personalCategory);
-        profCategory = findViewById(R.id.profCategory);
-        importantCategory = findViewById(R.id.importantCategory);
         checkBoxContainer = findViewById(R.id.checkBoxContainer);
-        categoryCheckBox.add(personalCategory);
-        categoryCheckBox.add(profCategory);
-        categoryCheckBox.add(importantCategory);
+        scrollView = findViewById(R.id.scrollView);
         posts = new ArrayList<>();
-
-
 
     }
 
@@ -77,16 +70,8 @@ public class CreatePost extends AppCompatActivity {
                     Category per_category = postSnapshot.getValue(Category.class);
                     //adding post to the list
                     categories.add(per_category);
-
-
                 }
-
-                for(int i = 0; i<categories.size(); i++){
-                    CheckBox cb = new CheckBox(getApplicationContext());
-                    cb.setText(categories.get(i).getCategoryName());
-                    System.out.println(categories.get(i).getCategoryName());
-                    checkBoxContainer.addView(cb);
-                }
+                onCheckboxClicked();
             }
 
             @Override
@@ -100,24 +85,36 @@ public class CreatePost extends AppCompatActivity {
 
     }
 
-    public void onCheckboxClicked(View v) {
-        // Is the view now checked?
-        categoriesString = "";
 
-        for (CheckBox category: categoryCheckBox){
-            if(category.isChecked())
-                categoriesString = categoriesString + category.getText().toString() + " ";
+    public void onCheckboxClicked() {
+        /*Creates Checkbox dynamically*/
+
+        for(int i = 0; i<categories.size(); i++){
+            CheckBox cb = new CheckBox(getApplicationContext());
+            cb.setText(categories.get(i).getCategoryName());
+            checkBoxContainer.addView(cb);
+            categoryCheckBox.add(cb);
+
+            cb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (int j = 0; j<categories.size(); j++){
+                        if(categoryCheckBox.get(j).isChecked())
+                            categoriesString = categories.get(j).getCategoryName() + " ";
+                    }
+                    category_mem = category_mem + categoriesString;
+                    System.out.println(currentTime.toString());
+                }
+            });
         }
-
     }
 
     public void createPost(View v) {
         String title = createTitle.getText().toString();
         String content = createContent.getText().toString();
-
                 if (!(TextUtils.isEmpty(title) && TextUtils.isEmpty(content))) {
                     String id = databasePosts.push().getKey();
-                    Post post = new Post(id, title, categoriesString, currentTime.toString(), content);
+                    Post post = new Post(id, title, category_mem, currentTime, content);
                     databasePosts.child(id).setValue(post);
 
                     //posts.add(post);
@@ -138,5 +135,11 @@ public class CreatePost extends AppCompatActivity {
 
 
         }
+
+    public void Back(View v){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
     }
 

@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChooseCategoryActivity"></activity>
+        <activity android:name=".ChooseDateActivity"></activity>
+        <activity android:name=".ChooseCategoryActivity" />
         <activity android:name=".PostActivity" />
         <activity android:name=".CreatePost" />
-        <activity android:name=".CreateCategoryActivity"></activity>
+        <activity android:name=".CreateCategoryActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

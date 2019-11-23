@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".CreatePost">
 
+    <Button
+        android:id="@+id/buttonBack3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="264dp"
+        android:layout_marginLeft="264dp"
+        android:layout_marginTop="580dp"
+        android:onClick="Back"
+        android:text="Back" />
+
     <EditText
         android:id="@+id/createTitle"
         android:layout_width="281dp"
@@ -16,7 +29,7 @@
         android:layout_marginStart="90dp"
         android:layout_marginLeft="90dp"
         android:layout_marginTop="24dp"
-        android:hint="Enter track name" />
+        android:hint="Enter title of blog." />
 
     <EditText
         android:id="@+id/createContent"
@@ -58,6 +71,7 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <ScrollView
+        android:id = "@+id/scrollView"
         android:layout_width="236dp"
         android:layout_height="150dp"
         android:layout_alignParentStart="true"
@@ -74,39 +88,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:id="@+id/personalCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:text="Personal"
-                android:onClick="onCheckboxClicked"/>
-
-            <CheckBox
-                android:id="@+id/profCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:text="Professional"
-                android:onClick="onCheckboxClicked"/>
-
-            <CheckBox
-                android:id="@+id/importantCategory"
-                android:layout_width="227dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:text="Important"
-                android:onClick="onCheckboxClicked"/>
-
-        </LinearLayout>
+            android:orientation="vertical"/>
     </ScrollView>
 
     <Button
@@ -116,10 +98,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="163dp"
-        android:layout_marginLeft="163dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
         android:layout_marginTop="580dp"
-        android:text="Post"
-        android:onClick="createPost"/>
+        android:onClick="createPost"
+        android:text="Post" />
 
 </RelativeLayout>
